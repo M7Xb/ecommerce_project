@@ -4,7 +4,7 @@ A modern, full-stack e-commerce mobile application built with **Flutter** and **
 
 ## 📱 Screenshots
 
-![Flutter E-Commerce App](flutter_01.png)
+![Flutter E-Commerce App](./assets/images/image.png)
 
 ## 🚀 Features
 
@@ -242,8 +242,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Your Name**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- Email: your.email@example.com
+- GitHub: [@M7Xb](https://github.com/M7Xb)
+- Email: mouadloka3@gmail.com
 
 ## 🙏 Acknowledgments
 
