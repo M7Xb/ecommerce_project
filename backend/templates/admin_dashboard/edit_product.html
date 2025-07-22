@@ -1,0 +1,228 @@
+{% extends 'admin_dashboard/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white py-3 d-flex align-items-center">
+                    <i class='bx bx-edit fs-4 text-primary me-2'></i>
+                    <h5 class="card-title mb-0 fw-bold">Edit Product</h5>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="row g-3">
+                            <!-- Product Title -->
+                            <div class="col-md-8 mb-3">
+                                <label for="title" class="form-label fw-medium">Product Title</label>
+                                <input type="text" class="form-control form-control-lg" id="title" name="title" value="{{ product.title }}" required>
+                                <div class="invalid-feedback">Please provide a product title.</div>
+                            </div>
+                            
+                            <!-- Category -->
+                            <div class="col-md-4 mb-3">
+                                <label for="category" class="form-label fw-medium">Category</label>
+                                <select class="form-select form-select-lg" id="category" name="category" required>
+                                    <option value="">Select category</option>
+                                    {% for category in categories %}
+                                    <option value="{{ category.id }}" {% if category.id == product.category.id %}selected{% endif %}>{{ category.name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="invalid-feedback">Please select a category.</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row g-3">
+                            <!-- Price -->
+                            <div class="col-md-6 mb-3">
+                                <label for="price" class="form-label fw-medium">Regular Price ($)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="price" name="price" step="0.01" min="0" value="{{ product.price }}" required>
+                                </div>
+                                <div class="invalid-feedback">Please provide a valid price.</div>
+                            </div>
+                            
+                            <!-- Sale Price -->
+                            <div class="col-md-6 mb-3">
+                                <label for="sale_price" class="form-label fw-medium">Sale Price ($)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" id="sale_price" name="sale_price" step="0.01" min="0" value="{{ product.sale_price|default:'' }}">
+                                </div>
+                                <div class="form-text text-muted">Leave empty if not on sale</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-medium">Product Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="4" required>{{ product.description }}</textarea>
+                            <div class="invalid-feedback">Please provide a product description.</div>
+                        </div>
+                        
+                        <!-- Main Product Image -->
+                        <div class="mb-4">
+                            <label for="image" class="form-label fw-medium">Main Product Image</label>
+                            <div class="d-flex align-items-center gap-3 mb-2">
+                                {% if product.image %}
+                                <div class="position-relative">
+                                    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="rounded border" style="width: 120px; height: 120px; object-fit: cover;">
+                                </div>
+                                {% endif %}
+                                <div class="flex-grow-1">
+                                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                                    {% if product.image %}
+                                    <div class="form-text">Current image: {{ product.image.name }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Gallery Section -->
+                        <div class="mb-4">
+                            <label class="form-label fw-medium">Product Gallery</label>
+                            <div class="product-gallery-container border rounded p-3 bg-light">
+                                <!-- Existing Gallery Images -->
+                                <div id="existing-gallery" class="row mb-3">
+                                    {% for image in product_images %}
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <img src="{{ image.image.url }}" class="card-img-top" alt="Gallery image" style="height: 120px; object-fit: cover;">
+                                            <div class="card-body p-2">
+                                                <div class="form-check mb-2">
+                                                    <input type="radio" class="form-check-input" id="primary_{{ image.id }}" 
+                                                           name="primary_image" value="{{ image.id }}" 
+                                                           {% if image.is_primary %}checked{% endif %}>
+                                                    <label class="form-check-label" for="primary_{{ image.id }}">Primary</label>
+                                                </div>
+                                                <div class="d-flex justify-content-end">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input delete-image-check" 
+                                                               id="delete_{{ image.id }}" name="deleted_images" value="{{ image.id }}">
+                                                        <label class="form-check-label text-danger" for="delete_{{ image.id }}">Delete</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                
+                                <!-- New Gallery Images -->
+                                <div id="gallery-images" class="row mb-3">
+                                    <!-- New gallery images will be added here dynamically -->
+                                </div>
+                                
+                                <button type="button" id="add-gallery-image" class="btn btn-outline-primary btn-sm">
+                                    <i class='bx bx-plus'></i> Add Gallery Image
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Stock Quantity -->
+                        <div class="mb-4">
+                            <label for="stock_quantity" class="form-label fw-medium">Stock Quantity</label>
+                            <input type="number" class="form-control" id="stock_quantity" name="stock_quantity" min="0" value="{{ product.stock_quantity }}" required>
+                            <div class="invalid-feedback">Please provide a valid stock quantity.</div>
+                        </div>
+                        
+                        <!-- Product Status -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <label class="form-label fw-medium mb-3">Product Status</label>
+                                <div class="d-flex gap-4">
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" id="is_new" name="is_new" {% if product.is_new %}checked{% endif %}>
+                                        <label class="form-check-label" for="is_new">Mark as New</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input type="checkbox" class="form-check-input" id="is_on_sale" name="is_on_sale" {% if product.is_on_sale %}checked{% endif %}>
+                                        <label class="form-check-label" for="is_on_sale">On Sale</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <a href="{% url 'admin_dashboard:product_list' %}" class="btn btn-light px-4">Cancel</a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class='bx bx-save me-1'></i> Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for handling gallery images -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryContainer = document.getElementById('gallery-images');
+        const addButton = document.getElementById('add-gallery-image');
+        let imageCount = 0;
+        
+        addButton.addEventListener('click', function() {
+            const imageIndex = imageCount++;
+            const imageCol = document.createElement('div');
+            imageCol.className = 'col-md-4 mb-3';
+            imageCol.innerHTML = `
+                <div class="card">
+                    <div class="card-body p-2">
+                        <div class="mb-2">
+                            <input type="file" class="form-control form-control-sm" 
+                                   name="gallery_image_${imageIndex}" accept="image/*">
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-image">
+                                <i class='bx bx-trash'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            galleryContainer.appendChild(imageCol);
+            
+            // Add event listener to remove button
+            imageCol.querySelector('.remove-image').addEventListener('click', function() {
+                imageCol.remove();
+            });
+        });
+        
+        // Preview uploaded images
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    const cardBody = this.closest('.card-body');
+                    
+                    reader.onload = function(e) {
+                        // Check if preview already exists
+                        let preview = cardBody.querySelector('.image-preview');
+                        if (!preview) {
+                            preview = document.createElement('div');
+                            preview.className = 'image-preview mb-2';
+                            cardBody.insertBefore(preview, cardBody.firstChild);
+                        }
+                        
+                        preview.innerHTML = `
+                            <img src="${e.target.result}" class="img-thumbnail" style="height: 100px; object-fit: cover;">
+                        `;
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+
+

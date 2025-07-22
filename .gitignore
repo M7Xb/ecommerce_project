@@ -1,0 +1,82 @@
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+flutter_*.png
+flutter_*.log
+**/doc/api/
+.fvm/
+
+# Android
+android/.gradle
+android/.kotlin
+android/app/debug
+android/app/profile
+android/app/release
+android/local.properties
+android/key.properties
+*.keystore
+
+# iOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/app.zip
+ios/Flutter/flutter_assets/
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+
+# Web
+web/
+
+# Python/Django
+backend/__pycache__/
+backend/*/__pycache__/
+backend/*/*/__pycache__/
+backend/*/*/*/__pycache__/
+backend/*.pyc
+backend/*/*.pyc
+backend/*/*/*.pyc
+backend/*/*/*/*.pyc
+backend/venv/
+backend/env/
+backend/.env
+backend/db.sqlite3
+backend/media/
+backend/staticfiles/
+backend/profile_images/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Firebase
+firebase-credentials.json
+google-services.json
+GoogleService-Info.plist
+
+# Sensitive files
+*.key
+*.pem
+*.p12
+local.properties

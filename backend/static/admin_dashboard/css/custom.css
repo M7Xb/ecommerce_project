@@ -1,0 +1,528 @@
+/* Common Search Box Styling */
+.admin-search-box {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+}
+
+.admin-search-box .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    z-index: 3;
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.admin-search-box .search-input {
+    padding-left: 35px;
+    border-radius: 6px;
+    height: 38px;
+    width: 100%;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+}
+
+.admin-search-box .search-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+    border-color: #86b7fe;
+    outline: none;
+}
+
+/* Remove any conflicting styles */
+.search-box {
+    max-width: none;
+}
+
+.search-icon {
+    position: static;
+    transform: none;
+}
+
+.search-input {
+    padding-left: 12px;
+}
+
+/* Products Table Specific Styling */
+.products-table {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.products-table thead {
+    background-color: #f8f9fa;
+}
+
+.products-table thead th {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+}
+
+.products-table tbody td {
+    padding: 1rem 1.25rem;
+    vertical-align: middle;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+}
+
+.products-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.products-table tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.02);
+}
+
+.products-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Product Image Styling - Improved */
+.product-img-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+.product-img-wrapper:hover .product-img {
+    transform: scale(1.05);
+}
+
+.product-img-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    font-size: 1.25rem;
+}
+
+/* Adjust table cell padding for better alignment */
+.products-table tbody td:first-child {
+    padding-left: 1.5rem;
+    width: 80px; /* Fixed width for image column */
+}
+
+.products-table thead th:first-child {
+    padding-left: 1.5rem;
+    width: 80px; /* Fixed width for image column header */
+}
+
+/* Product Title Styling */
+.product-title {
+    font-weight: 500;
+    color: #212529;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Category Badge Styling */
+.category-badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #f1f3f9;
+    color: #4361ee;
+    border-radius: 50px;
+}
+
+/* Price Tag Styling */
+.price-tag {
+    font-weight: 600;
+    color: #212529;
+}
+
+.sale-price-tag {
+    font-weight: 600;
+    color: #dc3545;
+}
+
+.no-sale-price {
+    color: #adb5bd;
+    font-weight: 500;
+}
+
+/* Status Badge Styling */
+.status-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 50px;
+}
+
+.status-badge.new {
+    background-color: rgba(25, 135, 84, 0.1);
+    color: #198754;
+}
+
+.status-badge.sale {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+}
+
+.status-badge.regular {
+    background-color: rgba(108, 117, 125, 0.1);
+    color: #6c757d;
+}
+
+/* Product Action Buttons Styling */
+.product-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.product-btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: transparent;
+}
+
+.product-btn-action.edit {
+    color: #4361ee;
+    background-color: rgba(67, 97, 238, 0.1);
+}
+
+.product-btn-action.delete {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.product-btn-action:hover {
+    transform: translateY(-2px);
+}
+
+.product-btn-action.edit:hover {
+    background-color: #4361ee;
+    color: white;
+}
+
+.product-btn-action.delete:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.product-btn-action i {
+    font-size: 1.1rem;
+}
+/* Soft Buttons */.btn-soft-primary {
+    color: var(--bs-primary);    background-color: rgba(var(--bs-primary-rgb), 0.1);
+    border-color: transparent;}
+.btn-soft-primary:hover {
+    color: #fff;    background-color: var(--bs-primary);
+}
+.btn-soft-danger {    color: var(--bs-danger);
+    background-color: rgba(var(--bs-danger-rgb), 0.1);    border-color: transparent;
+}
+.btn-soft-danger:hover {    color: #fff;
+    background-color: var(--bs-danger);}
+/* Card Styles */
+.card {    border: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);    border-radius: 12px;
+    margin-bottom: 24px;}
+.card-header {
+    background-color: white;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.25rem;
+}
+/* Responsive Table */@media (max-width: 992px) {
+    .custom-table {
+        min-width: 800px;
+    }
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+/* Order Items Modal Styles */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+    background-color: #fff;
+}
+
+.modal-title {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.list-group-item {
+    transition: background-color 0.2s;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.modal img.rounded {
+    border: 1px solid #dee2e6;
+}
+
+.text-primary {
+    color: #4361ee !important;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 1rem 1.5rem;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Status Dropdown Styles */
+.status-dropdown {
+    position: relative;
+}
+
+.status-badge {
+    min-width: 120px;
+    text-align: left;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.875rem;
+}
+
+.status-badge .bx {
+    font-size: 1.1rem;
+    margin-left: 4px;
+}
+
+.status-menu {
+    min-width: 150px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    margin-top: 4px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.status-form {
+    margin: 0;
+}
+
+/* User Dropdown Styles */
+.dropdown-toggle::after {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.dropdown-menu {
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    min-width: 220px;
+}
+
+.dropdown-header {
+    background-color: #f8f9fa;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: rgba(var(--bs-danger-rgb), 0.1);
+}
+
+.dropdown-divider {
+    margin: 0;
+}
+
+/* User profile button */
+#userDropdown {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    color: #333;
+}
+
+#userDropdown:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#userDropdown:focus {
+    box-shadow: none;
+}
+
+/* Add margin to the right of the admin profile section */
+.navbar .dropdown {
+    margin-right: 1.5rem;
+}
+
+/* Enhanced Add Button */
+.btn-primary {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary i {
+    transition: transform 0.2s ease;
+}
+
+.btn-primary:hover i {
+    transform: rotate(90deg);
+}
+
+/* Order Status Select Styling */
+.orders-status-select {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background-position: right 0.5rem center;
+    background-size: 12px;
+    transition: all 0.2s ease;
+}
+
+/* Status colors for order status dropdown */
+.orders-status-select.status-pending {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border-color: rgba(255, 193, 7, 0.2);
+}
+
+.orders-status-select.status-accepted {
+    background-color: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+.orders-status-select.status-shipped {
+    background-color: rgba(111, 66, 193, 0.1);
+    color: #6f42c1;
+    border-color: rgba(111, 66, 193, 0.2);
+}
+
+.orders-status-select.status-delivered {
+    background-color: rgba(25, 135, 84, 0.1);
+    color: #198754;
+    border-color: rgba(25, 135, 84, 0.2);
+}
+
+.orders-status-select.status-refused {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border-color: rgba(220, 53, 69, 0.2);
+}
+
+/* Order status update button */
+.order-status-update-btn {
+    margin-top: 0.5rem;
+    width: 100%;
+    font-size: 0.75rem;
+    padding: 0.25rem 0;
+}
+
+/* Stock Quantity Styling */
+.stock-quantity {
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.stock-quantity.low-stock {
+    background-color: #fff3cd;
+    color: #856404;
+    font-weight: 600;
+}
+
+/* Make sure the search functionality also searches in the stock column */
+

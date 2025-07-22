@@ -1,0 +1,117 @@
+{% extends 'admin_dashboard/base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Statistics Cards -->
+    <div class="stats-container mb-4">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class='bx bx-user-circle'></i>
+            </div>
+            <h3>Total Users</h3>
+            <div class="number">{{ total_users }}</div>
+            <div class="description">Registered users</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class='bx bx-category'></i>
+            </div>
+            <h3>Categories</h3>
+            <div class="number">{{ total_categories }}</div>
+            <div class="description">Product categories</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class='bx bx-package'></i>
+            </div>
+            <h3>Products</h3>
+            <div class="number">{{ total_products }}</div>
+            <div class="description">Total products</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class='bx bx-time-five'></i>
+            </div>
+            <h3>Active Deals</h3>
+            <div class="number">{{ total_deals }}</div>
+            <div class="description">Product deals</div>
+        </div>
+        <!-- Add new card for Total Orders -->
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class='bx bx-shopping-bag'></i>
+            </div>
+            <h3>Total Orders</h3>
+            <div class="number">{{ total_orders }}</div>
+            <div class="description">All orders</div>
+        </div>
+    </div>
+</div>
+
+<style>
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Changed from auto-fit to exactly 4 columns */
+    gap: 24px;
+    padding: 24px;
+}
+
+/* Add responsive breakpoints */
+@media (max-width: 1200px) {
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-card {
+    background: white;
+    border-radius: 15px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--first-color);
+    margin-bottom: 16px;
+}
+
+.stat-card h3 {
+    color: #012970;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.stat-card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #012970;
+    margin-bottom: 4px;
+}
+
+.stat-card .description {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+</style>
+{% endblock %}
+
+
+
+
+
+
+
+

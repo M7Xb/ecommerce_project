@@ -1,0 +1,62 @@
+name: ecommerce_app
+description: A modern e-commerce application.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.0.15
+  provider: ^6.0.5
+  cached_network_image: ^3.2.3
+  google_fonts: ^5.1.0
+  flutter_staggered_grid_view: ^0.7.0
+  badges: ^3.1.1
+  flutter_carousel_widget: ^2.1.2
+  intl: ^0.18.0
+  http: ^1.1.0
+  flutter_secure_storage: ^9.0.0
+  image_picker: ^1.0.4
+  
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # Comment out or remove flutter_native_splash
+  # flutter_native_splash: ^2.3.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/images/onboarding1.png
+    - assets/images/onboarding2.png
+    - assets/images/onboarding3.png
+    - assets/icon/
+    # Other assets...
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "assets/icon/ecommerce.png"
+  web:
+    generate: true
+    image_path: "assets/icon/ecommerce.png"
+  windows:
+    generate: true
+    image_path: "assets/icon/ecommerce.png"
+
+# Remove or comment out the flutter_native_splash configuration
+# flutter_native_splash:
+#   color: "#FFFFFF"
+#   image: "assets/icon/ecommerce.png"
+#   ...
+
+
+
+
+
