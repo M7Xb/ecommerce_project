@@ -240,7 +240,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Your Name**
+
 
 - GitHub: [@M7Xb](https://github.com/M7Xb)
 - Email: mouadloka3@gmail.com
